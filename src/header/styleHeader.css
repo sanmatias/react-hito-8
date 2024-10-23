@@ -1,0 +1,10 @@
+.head{
+    background-image: url('Header.jpg') ;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    color: white;
+    display: grid;
+    text-align: center;
+  }
+  

@@ -1,0 +1,14 @@
+.grilla{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 80px;
+    padding-top: 30px;
+
+}
+.card{
+    height: 350px;
+    width: 250px;
+}
+
+

@@ -1,0 +1,22 @@
+.navbar{
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+height: 25px;
+
+}
+
+
+.izquierda{
+    display:  inline-flex;
+    align-items: center;
+gap: 5px;
+}
+
+.mensaje{
+    display: inline-flex;
+    width: 190px;
+}
+

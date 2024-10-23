@@ -1,0 +1,38 @@
+.login{
+    height: 200px;
+text-align: center;
+padding-top: 20px;
+}
+
+#boton{
+    background-color: black;
+    color: white;
+    margin-top: 16px;
+}
+#boton:hover{
+    border-color: gray;
+}
+
+.segundaOpcion{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.cuadrado{
+   border:1px ridge black;
+   width: 300px;
+   border-radius: 30px;
+   padding: 0px;
+   margin: 0px;
+   display: inline-block;
+   padding-bottom: 20px;
+}
+.master{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 20px;
+  
+}
+.sub{
+    text-decoration: none;
+}
