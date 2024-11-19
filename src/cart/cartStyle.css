@@ -1,0 +1,16 @@
+.lista{
+    grid-template-columns: 0.2fr 1fr 2fr 0.2fr 0.2fr;
+    display: grid;
+    height: 100px;
+}
+.precio{
+    grid-template-columns: 0.2fr 0.2fr 0.2fr;
+    display: grid;
+}
+.botones{
+    height: 35px;
+    width: 35px;
+   
+    display: flexbox;
+    align-items: center;
+}
