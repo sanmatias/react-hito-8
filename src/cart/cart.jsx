@@ -2,8 +2,9 @@ import { useState,useEffect } from "react";
 import pizzaCard from "../pizzaCard/pizzaCard";
 import './cartStyle.css'
 import Button from 'react-bootstrap/Button';
+const pizzas = await pizzaCard()
 function Cart(){
-    const pizzas = pizzaCard()
+    
     const [pizzasCliente, setPizza] = useState(pizzas);
     const [total,setTotal] = useState(0);
 
@@ -14,6 +15,10 @@ function Cart(){
         const suma = pizzasCliente.reduce((total,pizza) => total + pizza.price, 0);
         setTotal(suma)
     }, [pizzasCliente])
+
+   
+
+
 
     const findValueById= async (idPrecio) =>{
         let valorPizza= 0
@@ -32,7 +37,8 @@ function Cart(){
         
         {...pizza,price: pizza.price +valorUnidad} : pizza
         ))
-valorTotal(pizzasCliente)
+//valorTotal(pizzasCliente)
+
     }
 
 
@@ -52,7 +58,7 @@ valorTotal(pizzasCliente)
             
       
         ).filter(((pizza)=> pizza.price >0))) 
-    valorTotal()
+    //valorTotal()
     }
  
 

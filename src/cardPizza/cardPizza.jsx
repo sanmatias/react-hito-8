@@ -9,12 +9,16 @@ function CardPizza(props){
     
       return (
         
-          <Card>
+          <Card style={{ width: '18rem' ,height:'620px'}}>
             <Card.Img className='img' variant="top" src={props.img} />
             <Card.Body>
             <Card.Text className='titulo'>
            {props.name} 
               </Card.Text>
+              <Card.Text className='titulo'>
+           {props.desc} 
+              </Card.Text>
+
               <Card.Text >
                 <div className='subTitulo'>
                 Ingredientes</div> <br />
