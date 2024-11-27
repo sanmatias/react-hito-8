@@ -4,7 +4,7 @@ import { CiPizza } from "react-icons/ci";
 import { FcLock } from "react-icons/fc";
 import { GiShoppingCart } from "react-icons/gi";
 import React, { useState } from 'react';
-
+import { Link } from 'react-router-dom';
 
 
 function Mostrar() {
@@ -19,18 +19,20 @@ function Mostrar() {
      <>
         {visible ? (
           <>
+          <Link to="/profile">
         <Button variant="dark" className='navbar botonIzquierda'>
-        <FcLock /> Profile</Button>
+        <FcLock /> Profile</Button></Link>
         <Button variant="dark" className='navbar botonIzquierda' onClick={toggleVisibilidad}>
           <FcLock /> Logout</Button>
           </>
         ):(
           <>
-            <Button variant="dark"  className='navbar botonIzquierda' onClick={toggleVisibilidad}> 
-<FcLock /> login</Button>
-
+          <Link to="/login">
+            <Button variant="dark" to="login"  className='navbar botonIzquierda' onClick={toggleVisibilidad}> 
+<FcLock /> login</Button></Link>
+<Link to="/registro">
  <Button variant="dark"  className='navbar botonIzquierda'> 
- <FcLock /> register</Button>  
+ <FcLock /> register</Button>  </Link>
           </>    
         )}
      </>
@@ -46,9 +48,9 @@ function Navbar() {
   return (
     <div className='navbar'>
        <div className='izquierda'><p className='mensaje'>Pizzeria Mamma Mia!</p>
- 
+ <Link to="/">
   <Button variant="dark"  className='navbar botonIzquierda'> 
-  <CiPizza /> home</Button>
+  <CiPizza /> home</Button></Link>
 
 
   {Mostrar()}
@@ -58,8 +60,9 @@ function Navbar() {
  </div>
 </div><div></div>
         <div className='derecha'>
+    <Link to="/cart">
     <Button variant="dark" size="sm" className='navbar'> 
-    <GiShoppingCart /> total: {total}</Button>
+    <GiShoppingCart /> total: {total}</Button> </Link>
     </div>
    
 

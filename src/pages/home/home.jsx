@@ -3,11 +3,9 @@ import './homeStyle.css'
 import Header from "../header/header";
 import { useState,useEffect } from "react";
 //import pizzaCard from "../pizzaCard/pizzaCard";
-
+import Footer from "../footer/footer";
 
 function Home(){
-
-
 
     const [ listaPizza,setPizzas] =useState([])
  
@@ -24,14 +22,10 @@ function Home(){
          obtenerPizzas()
     
     },[])
-    
-    
-
-
-
 
     return(
-        <div>
+        <>
+        
         <div>
         <Header />
       </div>
@@ -48,9 +42,8 @@ function Home(){
     />
     )}
     </div>
-    </div>
-    )
-    
-}
+   
+</>   
+    )}
  
 export default Home;

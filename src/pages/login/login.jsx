@@ -77,11 +77,6 @@ return(
         value={contraseña}
       />
       </Col>
-
-      
-      
-
-
       </Form.Group>
       <Button type='submit' variant="dark" id='boton'>Enviar</Button>
       </Form>
