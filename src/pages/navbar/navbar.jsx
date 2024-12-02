@@ -1,19 +1,22 @@
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import './styleNavbar.css'
 import { CiPizza } from "react-icons/ci";
 import { FcLock } from "react-icons/fc";
 import { GiShoppingCart } from "react-icons/gi";
-import React, { useState } from 'react';
+import { useState,useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FuncionesCartContext } from '../../contexts/funcionesCartContext';
+import { CartContext } from '../../contexts/cartContext';
 
 
 function Mostrar() {
-  // Definimos el estado "visible", inicialmente true
+
   const [visible, setVisible] = useState(true);
 
   // Función para alternar el valor de visible
   const toggleVisibilidad = () => {
-    setVisible(!visible);  // Cambia el estado entre true y false
+    setVisible(!visible);  
   };
     return (
      <>
@@ -43,7 +46,13 @@ function Mostrar() {
 
 
 function Navbar() {
-    const total = 25000;
+  const {pizzasCliente,total,sumaTotal} = useContext(CartContext)
+ 
+
+  useEffect(() => {
+    sumaTotal(pizzasCliente)
+  }, [pizzasCliente]);
+ 
     const token = false;
   return (
     <div className='navbar'>

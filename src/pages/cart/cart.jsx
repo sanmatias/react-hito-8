@@ -1,66 +1,20 @@
-import { useState,useEffect } from "react";
-import pizzaCard from "../pizzaCard/pizzaCard";
+import { useContext, useEffect, useState } from "react";
 import './cartStyle.css'
 import Button from 'react-bootstrap/Button';
-const pizzas = await pizzaCard()
+import { CartContext } from "../../contexts/cartContext";
+import { FuncionesCartContext } from "../../contexts/funcionesCartContext";
 function Cart(){
-    
-    const [pizzasCliente, setPizza] = useState(pizzas);
-    const [total,setTotal] = useState(0);
 
 
+    const {sumar,restar,} = useContext(FuncionesCartContext)
+    const {total,sumaTotal,pizzasCliente} =useContext(CartContext)
 
-    
-    useEffect(() =>{
-        const suma = pizzasCliente.reduce((total,pizza) => total + pizza.price, 0);
-        setTotal(suma)
-    }, [pizzasCliente])
-
-   
-
-
-
-    const findValueById= async (idPrecio) =>{
-        let valorPizza= 0
-        
-        pizzas.forEach((pizza)=>{  
-            if(pizza.id ==idPrecio){
-                valorPizza = pizza.price
-            }})
-        return valorPizza
-    }
-    const sumar = async (id) =>{
-        let valorUnidad = 0
-        valorUnidad = await findValueById(id)
-        setPizza(pizzasCliente.map((pizza)=>
-        pizza.id == id ?
-        
-        {...pizza,price: pizza.price +valorUnidad} : pizza
-        ))
-//valorTotal(pizzasCliente)
-
-    }
-
-
-
-    const restar = async (id) =>{
-        let valorUnidad = 0
-        valorUnidad = await findValueById(id)
-        console.log(valorUnidad)
-        setPizza(pizzasCliente.map((pizza)=>{  
-            if(pizza.id == id ){
-                let precioFinal = pizza.price - valorUnidad;
-                             
-                return {...pizza,price: precioFinal} 
-            }
-            return pizza
-        }
-            
+    useEffect(() => {
+        sumaTotal(pizzasCliente)
+      }, [pizzasCliente]);
       
-        ).filter(((pizza)=> pizza.price >0))) 
-    //valorTotal()
-    }
- 
+
+
 
 
     return (
@@ -68,9 +22,9 @@ function Cart(){
           {  
         pizzasCliente.map((pizza)=>
             (
-        <li className="lista"> <img src={pizza.img} alt="" height={40} width={40}/>  <p>{pizza.name}</p>  
+        <li className="lista" key={pizza.id}> <img src={pizza.img} alt="" height={40} width={40}/>  <p>{pizza.name}</p>  
         
-        <div className="precio"><p>{pizza.price}</p>  <Button onClick={() =>restar(pizza.id)} className="botones">-</Button> <Button onClick={() =>sumar(pizza.id)} className="botones">+</Button> </div>
+        <div className="precio"><p>{pizza.price}</p>  <Button onClick={() => restar(pizza.id,pizzasCliente)} className="botones">-</Button> <Button onClick={() =>sumar(pizza.id,pizzasCliente)} className="botones">+</Button> </div>
         </li> 
             ))}
 <div>
@@ -79,13 +33,8 @@ function Cart(){
         <h1> {total}</h1>
         </div>
 <Button variant="secondary"> pagar</Button>
-
         </div>
-
-      
         )
-
-
 }
 
 export default Cart

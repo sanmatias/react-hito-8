@@ -1,43 +1,35 @@
+import React from "react";
 import CardPizza from "../cardPizza/cardPizza";
 import './homeStyle.css'
 import Header from "../header/header";
-import { useState,useEffect } from "react";
-//import pizzaCard from "../pizzaCard/pizzaCard";
-import Footer from "../footer/footer";
-
+import { useState,useEffect, useContext } from "react";
+import pizzaCard from "../pizzaCard/pizzaCard";
+const pizzas = await pizzaCard() 
+import { CartContext } from "../../contexts/cartContext";
 function Home(){
+    const {pizzasCliente,sumaTotal} = useContext(CartContext)
 
-    const [ listaPizza,setPizzas] =useState([])
- 
-    useEffect(() =>{
-        const obtenerPizzas = async () =>{
-            const url = " http://localhost:5000/api/pizzas"
-            const response = await fetch(url)
-            const data = await response.json()
-            console.log(data)
-            setPizzas(data) 
-            
-    
-        }
-         obtenerPizzas()
-    
-    },[])
+    useEffect(() => {
+        console.log(pizzasCliente)
+        sumaTotal(pizzasCliente)
+      }, [pizzasCliente]);
 
     return(
         <>
-        
         <div>
         <Header />
       </div>
-
         <div className="grilla">
-    {listaPizza.map((pizza,indice) =>
-    <CardPizza  className="card"
+    {pizzas.map((pizza,indice) =>
+    <CardPizza  key={pizza.id} className="card"
     name={pizza.name}
     price={pizza.price}
     desc={pizza.desc}
     img={pizza.img}
     ingrediets={pizza.ingredients}
+    id={pizza.id}
+    lista={pizzasCliente}
+    pizzas={pizzas}
 
     />
     )}
