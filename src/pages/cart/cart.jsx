@@ -3,9 +3,10 @@ import './cartStyle.css'
 import Button from 'react-bootstrap/Button';
 import { CartContext } from "../../contexts/cartContext";
 import { FuncionesCartContext } from "../../contexts/funcionesCartContext";
+import { TokenContext } from "../../contexts/tokenContext";
 function Cart(){
 
-
+  const {token}  = useContext(TokenContext)
     const {sumar,restar,} = useContext(FuncionesCartContext)
     const {total,sumaTotal,pizzasCliente} =useContext(CartContext)
 
@@ -32,7 +33,10 @@ function Cart(){
         <h1> Total: </h1>
         <h1> {total}</h1>
         </div>
-<Button variant="secondary"> pagar</Button>
+
+  (<Button variant="secondary" disabled={!token}> pagar</Button>)
+
+
         </div>
         )
 }

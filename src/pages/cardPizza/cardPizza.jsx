@@ -4,12 +4,17 @@ import './cardStyle.css'
 import Button from 'react-bootstrap/Button';
 import { PiEyesFill } from "react-icons/pi";
 import { GiShoppingCart } from "react-icons/gi";
-import { useContext,useEffect } from 'react';
+import { useContext,useEffect,useState } from 'react';
 import { CartContext } from '../../contexts/cartContext';
+import { useNavigate } from "react-router-dom";
 function CardPizza(props){
+  const navigate = useNavigate()
+ // const [id,setId] = useState("")
+  const navegarCard = (idPizza) =>{
+    navigate("/pizza/"+idPizza)
+  }
+
   const {agregar} = useContext(CartContext)
-
-
 
       return (       
           <Card style={{ width: '18rem' ,height:'620px'}}>
@@ -32,10 +37,10 @@ function CardPizza(props){
 <Card.Text className='botones'>
              
               <div>
-            <Button variant="dark"  className=''> 
+            <Button variant="dark"  className='' onClick={() =>navegarCard(props.id)}> 
             Ver Más <PiEyesFill /></Button></div>
             <div>
-            <Button variant="dark"  className='boton' onClick={() =>agregar(props.id,props.lista,props.pizzas)}> 
+            <Button variant="dark"  className='boton' onClick={() =>agregar(props.id)}> 
             Añadir <GiShoppingCart /> </Button>
             </div>
             </Card.Text>

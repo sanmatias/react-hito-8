@@ -28,8 +28,6 @@ function Home(){
     img={pizza.img}
     ingrediets={pizza.ingredients}
     id={pizza.id}
-    lista={pizzasCliente}
-    pizzas={pizzas}
 
     />
     )}

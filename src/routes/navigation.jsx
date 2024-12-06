@@ -8,20 +8,26 @@ import Pizza from "../pages/pizza/pizza";
 import Cart from "../pages/cart/Cart";
 import Footer from "../pages/footer/footer";
 import Profile from "../pages/profile/profile";
+import { useContext } from "react";
+import { TokenContext } from "../contexts/tokenContext";
 
-const Navigation = () =>(
-
+const Navigation = () =>{
+    const {token} = useContext(TokenContext) 
+    console.log(token)
+    return(
+ 
     <Router>
+       
    <Navbar />
         <Routes>
-        
+   
             <Route path="/" element={<Home />} />
-            <Route path="/registro" element={<Register />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={!token? <Register />:<Home />} />
+            <Route path="/login" element={!token?<Login /> :<Home />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/pizza/p001" element={<Pizza />} />
+            <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/profile" element={<Profile/>}> </Route>
+            <Route path="/profile" element={!token? <Login /> :<Profile/>} /> 
            
         </Routes>
         <Footer/>
@@ -30,6 +36,6 @@ const Navigation = () =>(
     </Router>
 
 
-)
+)}
 
 export default Navigation

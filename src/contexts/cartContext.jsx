@@ -1,7 +1,11 @@
+import React from "react";
 import { useContext,useState,useEffect, createContext } from "react";
 export const CartContext = createContext({})
+import pizzaCard from "../pages/pizzaCard/pizzaCard";
+const pizzas = await pizzaCard()
 
 const CartProvider = ({children}) =>{
+    
     const [pizzasCliente, setPizza] = useState([]);
     const [total,setTotal] = useState(0);
 
@@ -12,13 +16,12 @@ const CartProvider = ({children}) =>{
         setTotal(suma)
     }
 
-    const agregar = (id,listaPizza,pizzas) =>{
-        if(!listaPizza.some(pizza=> pizza.id ==id )){    
-            listaPizza.push(pizzas.find(pizza=> pizza.id ==id))
-         
+    const agregar = (id) =>{
+        if(!pizzasCliente.some(pizza=> pizza.id ==id )){    
+            pizzasCliente.push(pizzas.find(pizza=> pizza.id ==id))        
+        } 
         }
-       
-    }
+    
 
 
 return (
