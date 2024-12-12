@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-
-
+import { TokenContext } from '../../contexts/tokenContext';
+import { useContext } from 'react';
 function mensajeSwal(titulo,mensaje,icono){
     Swal.fire({
         title:titulo,
@@ -20,20 +20,22 @@ function mensajeSwal(titulo,mensaje,icono){
 let usuario = [{email:'correo@dominio.cl',contraseña:'123456'}];
 
 function Login(){
-    const [email,setEmail] = useState('');
-    const [contraseña,setContraseña] = useState('');
+    const {login,email,setEmail,password,setPassword}= useContext(TokenContext);
+   // const [email,setEmail] = useState('');
+   // const [password,setPassword] = useState('');
+
+
 
     const validarRegistro = (e) =>{
         e.preventDefault();
-        if(!email.trim() || !contraseña.trim() ){
+        if(!email.trim() || !password.trim() ){
             mensajeSwal('Error','Los campos no pueden estar vacios','error')
-           console.log(usuario.email)
-           
         }else{
             if(contraseña.length<6){
                 mensajeSwal('Error','La contraseña debe tener más de 5 caracteres','error')
-            }else{if(email ==usuario[0].email && contraseña ==usuario[0].contraseña){
+            }else{if(email ==usuario[0].email && password ==usuario[0].password){
                     mensajeSwal('Logrado','Los datos son correctos: '+usuario[0].email,'success')
+
                 }else{
                     mensajeSwal('Error','La contraseña o el correo no se encuentra','error')
                 }
@@ -51,7 +53,11 @@ return(
         
     <div className='login'>
     <h2>Inicio de Sesión</h2>
-    <Form onSubmit={validarRegistro}>
+    <Form onSubmit={
+        login
+        //validarRegistro
+        
+        }>
         <Form.Group as='Row'>
     <Form.Label column sm="2">Correo</Form.Label>
     <Col sm="10">
@@ -60,9 +66,9 @@ return(
         id="email"
         name="email"
    placeholder="correo@dominio.cl"
-   
-   onChange={(e) => setEmail(e.target.value)}
    value={email}
+   onChange={(e) => setEmail(e.target.value)}
+   
       /> 
       </Col>
 
@@ -70,11 +76,13 @@ return(
    <Col sm="10">
       <Form.Control
         type="password"
-        name="contraseña"
+        name="password"
         aria-describedby="passwordHelpBlock"
         placeholder='123456'
-        onChange={(e) => setContraseña(e.target.value)}
-        value={contraseña}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        
+
       />
       </Col>
       </Form.Group>

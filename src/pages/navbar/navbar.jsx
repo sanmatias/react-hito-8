@@ -11,33 +11,41 @@ import { CartContext } from '../../contexts/cartContext';
 import { TokenContext } from '../../contexts/tokenContext';
 
 function Mostrar() {
-  const {terminoSesion,iniciarSesion,token} = useContext(TokenContext)
+  const {terminoSesion,iniciarSesion,token,logout} = useContext(TokenContext)
 
   // Función para alternar el valor de visible
 
     return (
      <>
-        {token ? (
-          <>
-          <Link to="/profile">
-        <Button variant="dark" className='navbar botonIzquierda'>
-        <FcLock /> Profile</Button></Link>
-        <Button variant="dark" className='navbar botonIzquierda' onClick={terminoSesion}>
-          <FcLock /> Logout</Button>
-          </>
-        ):(
-          
+        {!token ? (
           <>
            <Link to="/">
   <Button variant="dark"  className='navbar botonIzquierda'> 
   <CiPizza /> home</Button></Link>
           <Link to="/login">
-            <Button variant="dark" to="login"  className='navbar botonIzquierda' onClick={iniciarSesion}> 
+            <Button variant="dark" to="login"  className='navbar botonIzquierda' > 
 <FcLock /> login</Button></Link>
 <Link to="/registro">
  <Button variant="dark"  className='navbar botonIzquierda'> 
  <FcLock /> register</Button>  </Link>
- 
+  
+          </>
+        ):(
+          
+          <>
+        
+
+ <Link to="/">
+  <Button variant="dark"  className='navbar botonIzquierda'> 
+  <CiPizza /> home</Button></Link>
+        
+          <Link to="/profile">
+        <Button variant="dark" className='navbar botonIzquierda'>
+        <FcLock /> Profile</Button>
+        </Link>
+        
+        <Button variant="dark" className='navbar botonIzquierda' onClick={logout}>
+          <FcLock /> Logout</Button>
    
           </>    
         )}
@@ -50,7 +58,7 @@ function Mostrar() {
 
 function Navbar() {
   const {pizzasCliente,total,sumaTotal} = useContext(CartContext)
-  const {terminoSesion,iniciarSesion,token} = useContext(TokenContext)
+  const {iniciarSesion,token} = useContext(TokenContext)
 
   useEffect(() => {
     sumaTotal(pizzasCliente)

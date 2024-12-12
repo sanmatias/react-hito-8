@@ -7,7 +7,11 @@ import { GiShoppingCart } from "react-icons/gi";
 import { useContext,useEffect,useState } from 'react';
 import { CartContext } from '../../contexts/cartContext';
 import { useNavigate } from "react-router-dom";
+
 function CardPizza(props){
+
+  
+
   const navigate = useNavigate()
  // const [id,setId] = useState("")
   const navegarCard = (idPizza) =>{
@@ -17,6 +21,9 @@ function CardPizza(props){
   const {agregar} = useContext(CartContext)
 
       return (       
+
+        <> 
+    
           <Card style={{ width: '18rem' ,height:'620px'}}>
             <Card.Img className='img' variant="top" src={props.img} />
             <Card.Body>
@@ -37,7 +44,11 @@ function CardPizza(props){
 <Card.Text className='botones'>
              
               <div>
-            <Button variant="dark"  className='' onClick={() =>navegarCard(props.id)}> 
+            <Button variant="dark"  className='' onClick={()=>
+              navegarCard(props.id)
+              
+              
+              }> 
             Ver Más <PiEyesFill /></Button></div>
             <div>
             <Button variant="dark"  className='boton' onClick={() =>agregar(props.id)}> 
@@ -46,6 +57,14 @@ function CardPizza(props){
             </Card.Text>
             </Card.Body>    
           </Card>
+
+       
+
+
+
+          </>
+
+
       );
 }
 

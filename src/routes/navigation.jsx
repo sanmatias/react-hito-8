@@ -13,7 +13,6 @@ import { TokenContext } from "../contexts/tokenContext";
 
 const Navigation = () =>{
     const {token} = useContext(TokenContext) 
-    console.log(token)
     return(
  
     <Router>
@@ -27,7 +26,7 @@ const Navigation = () =>{
             <Route path="/cart" element={<Cart />} />
             <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/profile" element={!token? <Login /> :<Profile/>} /> 
+            <Route path="/profile" element={token? <Profile/>: <Login /> } /> 
            
         </Routes>
         <Footer/>

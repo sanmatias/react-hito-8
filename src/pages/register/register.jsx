@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import './registerStyle.css' 
 
@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { TokenContext } from '../../contexts/tokenContext';
 
 
 function mensajeSwal(titulo,mensaje,icono){
@@ -19,9 +20,11 @@ function mensajeSwal(titulo,mensaje,icono){
 }
 
 function Register(){
+    const {register} = useContext(TokenContext)
     const [email,setEmail] = useState('');
     const [contraseña,setContraseña] = useState('');
     const [contraseñaValidacion,setContraseñaValidacion] = useState('')
+    
     const validarRegistro = (e) =>{
         e.preventDefault();
         if((!email.trim() || !contraseña.trim()) || !contraseñaValidacion.trim() ){
@@ -49,7 +52,7 @@ return(
         
     <div className='registro'>
     <h2>Registro de usuario</h2>
-    <Form onSubmit={validarRegistro}>
+    <Form onSubmit={(e)=> register(e,email,contraseña)}>
         <Form.Group as='Row'>
     <Form.Label column sm="2">Correo</Form.Label>
     <Col sm="10">
