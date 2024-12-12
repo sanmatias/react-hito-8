@@ -6,7 +6,6 @@ import { FcLock } from "react-icons/fc";
 import { GiShoppingCart } from "react-icons/gi";
 import { useState,useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FuncionesCartContext } from '../../contexts/funcionesCartContext';
 import { CartContext } from '../../contexts/cartContext';
 import { TokenContext } from '../../contexts/tokenContext';
 
@@ -79,7 +78,7 @@ function Navbar() {
 </div><div></div>
 <div className='derecha'>
     <Link to="/cart">
-    <Button variant="dark" size="sm" className='navbar'> 
+    <Button variant="dark" size="sm" className=' btnright'> 
     <GiShoppingCart /> total: {total} </Button> </Link>
     </div>
 

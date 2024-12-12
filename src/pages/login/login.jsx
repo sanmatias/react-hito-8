@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import './loginStyle.css' 
 import Col from 'react-bootstrap/Col';
@@ -21,8 +20,6 @@ let usuario = [{email:'correo@dominio.cl',contraseña:'123456'}];
 
 function Login(){
     const {login,email,setEmail,password,setPassword}= useContext(TokenContext);
-   // const [email,setEmail] = useState('');
-   // const [password,setPassword] = useState('');
 
 
 

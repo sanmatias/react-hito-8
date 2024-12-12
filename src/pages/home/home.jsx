@@ -6,7 +6,6 @@ import { useState,useEffect, useContext } from "react";
 import pizzaCard from "../pizzaCard/pizzaCard";
 const pizzas = await pizzaCard() 
 import { CartContext } from "../../contexts/cartContext";
-import ModalPizza from "../modalPizza/modalPizza";
 import Pizza from "../pizza/pizza";
 function Home(){
     const {pizzasCliente,sumaTotal} = useContext(CartContext)
@@ -34,9 +33,7 @@ function Home(){
     />
     )}
     </div>
-    <ModalPizza 
-    cuerpo={<Pizza/>}
-    />
+   
 </>   
     )}
  

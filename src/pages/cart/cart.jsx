@@ -25,7 +25,7 @@ function Cart(){
             (
         <li className="lista" key={pizza.id}> <img src={pizza.img} alt="" height={40} width={40}/>  <p>{pizza.name}</p>  
         
-        <div className="precio"><p>{pizza.price}</p>  <Button onClick={() => restar(pizza.id,pizzasCliente)} className="botones">-</Button> <Button onClick={() =>sumar(pizza.id,pizzasCliente)} className="botones">+</Button> </div>
+        <div className="precio"><p>{pizza.price}</p>  <Button onClick={() => restar(pizza.id,pizzasCliente)} className="botonescompra">-</Button> <Button onClick={() =>sumar(pizza.id,pizzasCliente)} className="botonescompra">+</Button> </div>
         </li> 
             ))}
 <div>

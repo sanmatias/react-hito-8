@@ -24,13 +24,13 @@ function CardPizza(props){
 
         <> 
     
-          <Card style={{ width: '18rem' ,height:'620px'}}>
+          <Card style={{ width: '18rem' ,height:'660px'}}>
             <Card.Img className='img' variant="top" src={props.img} />
             <Card.Body>
             <Card.Text className='titulo'>
            {props.name} 
               </Card.Text>
-              <Card.Text className='titulo'>
+              <Card.Text className='titulo info'>
            {props.desc} 
               </Card.Text>
               <Card.Text >
@@ -44,28 +44,18 @@ function CardPizza(props){
 <Card.Text className='botones'>
              
               <div>
-            <Button variant="dark"  className='' onClick={()=>
-              navegarCard(props.id)
-              
-              
-              }> 
+            <Button variant="dark"  className=' btn' onClick={()=>
+              navegarCard(props.id) }> 
             Ver Más <PiEyesFill /></Button></div>
             <div>
-            <Button variant="dark"  className='boton' onClick={() =>agregar(props.id)}> 
+            <Button variant="dark"  className='boton btn' onClick={() =>agregar(props.id)}> 
             Añadir <GiShoppingCart /> </Button>
             </div>
             </Card.Text>
             </Card.Body>    
           </Card>
-
-       
-
-
-
           </>
-
-
-      );
+);
 }
 
 export default CardPizza

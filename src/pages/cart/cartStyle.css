@@ -2,15 +2,17 @@
     grid-template-columns: 0.2fr 1fr 2fr 0.2fr 0.2fr;
     display: grid;
     height: 100px;
+    padding: 20px;
 }
 .precio{
     grid-template-columns: 0.2fr 0.2fr 0.2fr;
     display: grid;
 }
-.botones{
+.botonescompra{
     height: 35px;
     width: 35px;
+    text-align: center;
+    display: inline-block;
    
-    display: flexbox;
-    align-items: center;
+   
 }

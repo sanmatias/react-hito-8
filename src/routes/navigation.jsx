@@ -19,20 +19,16 @@ const Navigation = () =>{
        
    <Navbar />
         <Routes>
-   
             <Route path="/" element={<Home />} />
             <Route path="/registro" element={!token? <Register />:<Home />} />
             <Route path="/login" element={!token?<Login /> :<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/pizza/:id" element={<Pizza />} />
             <Route path="*" element={<NotFound />} />
-            <Route path="/profile" element={token? <Profile/>: <Login /> } /> 
-           
+            <Route path="/profile" element={token? <Profile/>: <Login /> } />            
         </Routes>
         <Footer/>
-
-
-    </Router>
+ </Router>
 
 
 )}

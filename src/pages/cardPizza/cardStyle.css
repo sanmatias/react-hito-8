@@ -34,3 +34,12 @@
     color: white;
     background-color: rgb(74, 73, 73);
 }
+.info{
+    height: 220px;
+}
+.btn{
+    width: 60px;
+}
+.btnheight{
+    height: 40px;
+}
