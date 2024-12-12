@@ -46,8 +46,6 @@ const logout = async ()=>{
     setToken(false)
     useNavigate("/")
 }
-
-
 const getUser = async()=>{
     const tokenAuth = localStorage.getItem("token")
     if(tokenAuth){
